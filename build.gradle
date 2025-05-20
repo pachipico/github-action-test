@@ -13,6 +13,10 @@ java {
     }
 }
 
+springBoot {
+    mainClass = 'org.miro.test.TestApplication'
+}
+
 repositories {
     mavenCentral()
 }
