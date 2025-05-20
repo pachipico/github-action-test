@@ -31,28 +31,10 @@ jobs:
         id: vars
         run: echo "SHORT_SHA=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v3
-        with:
-          distribution: 'adopt'
-          java-version: '17'
-
-      - name: Grant execute permission for Gradle wrapper
-        run: chmod +x ./gradlew
-
-      - name: Build the project
-        run: ./gradlew build
-
-      - name: Build and push Docker image with Jib
-        run: ./gradlew jib --image=docker.io/$IMAGE_NAME:${{ steps.vars.outputs.SHORT_SHA }} .
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-
-      # - name: Build and push image
-      #   run: |
-      #     docker build -t $IMAGE_NAME:${{ steps.vars.outputs.SHORT_SHA }} .
-      #     docker push $IMAGE_NAME:${{ steps.vars.outputs.SHORT_SHA }}
+      - name: Build and push image
+        run: |
+          docker build -t $IMAGE_NAME:${{ steps.vars.outputs.SHORT_SHA }} .
+          docker push $IMAGE_NAME:${{ steps.vars.outputs.SHORT_SHA }}
 
   # update-helm-and-trigger:
   #   name: Update Helm Chart and Trigger ArgoCD
