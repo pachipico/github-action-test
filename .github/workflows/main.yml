@@ -52,7 +52,7 @@ jobs:
 
       - name: Update image tag in Helm values
         run: |
-          sed -i "s/tag: .*/tag: '${{ steps.vars.outputs.SHORT_SHA }}'/" helm-repo/$HELM_REPO_PATH
+          sed -i "s/tag: .*/tag: '${{ steps.vars.outputs.SHORT_SHA }}'/" $HELM_REPO_PATH
 
   #     - name: Commit and push
   #       run: |
