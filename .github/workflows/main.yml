@@ -60,5 +60,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@users.noreply.github.com"
           git add $HELM_REPO_PATH
-          git commit -m "chore: update image tag to ${{ steps.vars.outputs.SHORT_SHA }}"
+          git commit -m "chore: update ${{ steps.vars.outputs.SHORT_SHA }}"
           git push origin $TARGET_BRANCH
