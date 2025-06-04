@@ -8,7 +8,7 @@ on:
 env:
   IMAGE_NAME: pachipico/test
   HELM_REPO_URL: https://github.com/pachipico/miro-sys.git
-  HELM_REPO_PATH: services/test/values.yaml
+  HELM_REPO_PATH: services/backend-template/values.yaml
   TARGET_BRANCH: main
 
 jobs:
